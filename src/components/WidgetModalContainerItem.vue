@@ -1,5 +1,5 @@
 <template>
-	<div class = "widget__modal-container__item modal-container" @pointerdown.self.stop = "handelClick">
+	<div class = "widget__modal-container__item modal-container" :class="class" @pointerdown.self.stop = "handelClick">
 		<component
 			:is = "modal.component"
 			v-bind = "modal.props.value"
@@ -19,8 +19,12 @@
 
 	const props = defineProps({
 		id: Number,
+		class: {
+			type: String,
+			default: null
+		}
 	})
-	
+
 	const modal = getModalById(props.id);
 
 	function handelClick() {
